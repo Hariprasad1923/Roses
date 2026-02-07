@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Rose Day 🌹</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .rose-emoji {
+            font-size: 6rem;
+            animation: bounce 2s infinite;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .message {
+            font-size: 1.8rem;
+            color: #fff;
+            max-width: 800px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease-out;
+            margin: 20px 0;
+        }
+
+        .heart-container {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        .heart {
+            color: #ff6b9d;
+            font-size: 3rem;
+            animation: heartbeat 1.5s infinite;
+            text-shadow: 0 0 10px rgba(255, 107, 157, 0.8);
+        }
+
+        .heart:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .heart:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #ffe6f0;
+            max-width: 600px;
+            margin: 30px auto;
+            animation: fadeIn 3s ease-out;
+        }
+
+        /* Falling rose petals */
+        .petal {
+            position: fixed;
+            top: -50px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ff6b9d, #c41e3a);
+            border-radius: 50% 0 50% 0;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            40% {
+                transform: translateY(-30px) rotate(-10deg);
+            }
+            60% {
+                transform: translateY(-15px) rotate(10deg);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes fall {
+            to {
+                top: 100vh;
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: translateX(0) rotate(0deg);
+            }
+            50% {
+                transform: translateX(50px) rotate(180deg);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .rose-emoji {
+                font-size: 4rem;
+            }
+            .message {
+                font-size: 1.3rem;
+            }
+            .quote {
+                font-size: 1rem;
+            }
+            .heart {
+                font-size: 2rem;
+            }
+        }
+
+        /* Decorative elements */
+        .decorative-rose {
+            position: fixed;
+            font-size: 3rem;
+            opacity: 0.2;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .rose-top-left {
+            top: 10%;
+            left: 10%;
+        }
+
+        .rose-top-right {
+            top: 15%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .rose-bottom-left {
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        .rose-bottom-right {
+            bottom: 10%;
+            right: 15%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        /* Button styles */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0 20px 0;
+            animation: fadeIn 3.5s ease-out;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-family: 'Georgia', serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .btn-love {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c41e3a 100%);
+            color: white;
+        }
+
+        .btn-wishes {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #c41e3a;
+        }
+
+        .btn-special {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: #8b0000;
+        }
+
+        /* Splash rose animation */
+        .splash-rose {
+            position: fixed;
+            font-size: 3rem;
+            pointer-events: none;
+            z-index: 9999;
+            animation: splash 2s ease-out forwards;
+        }
+
+        @keyframes splash {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(0.5) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(720deg);
+            }
+        }
+
+        /* Message popup */
+        .message-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: linear-gradient(135deg, #ff6b9d 0%, #c41e3a 100%);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            max-width: 90%;
+            width: 500px;
+            text-align: center;
+            animation: popupAppear 0.5s ease-out forwards;
+        }
+
+        @keyframes popupAppear {
+            to {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .message-popup.hide {
+            animation: popupDisappear 0.5s ease-out forwards;
+        }
+
+        @keyframes popupDisappear {
+            to {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .popup-text {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup-close {
+            background: white;
+            color: #c41e3a;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .popup-close:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .rose-emoji {
+                font-size: 4rem;
+            }
+            .message {
+                font-size: 1.3rem;
+            }
+            .quote {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+            .heart {
+                font-size: 2rem;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            .button-container {
+                gap: 15px;
+            }
+            .popup-text {
+                font-size: 1.4rem;
+            }
+            .message-popup {
+                padding: 30px 20px;
+                width: 85%;
+            }
+            .splash-rose {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .rose-emoji {
+                font-size: 3rem;
+            }
+            .message {
+                font-size: 1.1rem;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative roses in corners -->
+    <div class="decorative-rose rose-top-left">🌹</div>
+    <div class="decorative-rose rose-top-right">🌹</div>
+    <div class="decorative-rose rose-bottom-left">🌹</div>
+    <div class="decorative-rose rose-bottom-right">🌹</div>
+
+    <div class="container">
+        <h1>Happy Rose Day Ammu!</h1>
+        <div class="rose-emoji">🌹</div>
+        <div class="message">
+            You Deserve flowers everyday . Maybe I should stop Aura farming and start doing rose farming for you ig 😂😂😂,<br>
+            
+        </div>
+        <div class="heart-container">
+            <div class="heart">❤️</div>
+            <div class="heart">💕</div>
+            <div class="heart">❤️</div>
+        </div>
+        <div class="quote">
+            “I know that I haven’t given you flowers yet. It’s not like I don’t want to or I can’t. The only thing in my head was, will you take them home? But take these virtual flowers, sweetie. You deserve them.”
+        </div>
+
+        <!-- Interactive Buttons -->
+        <div class="button-container">
+            <button class="btn btn-love" onclick="splashRoses('love')">Send Love 💝</button>
+            <button class="btn btn-wishes" onclick="splashRoses('wishes')">Best Wishes 🌸</button>
+            <button class="btn btn-special" onclick="splashRoses('special')">You're Special ✨</button>
+        </div>
+    </div>
+
+    <script>
+        // Messages for different buttons
+        const messages = {
+            love: [
+                "I love you more than you know! 💕" ,
+                "I love the way you are around me🌹❤️",
+                "I just hope no one loves you the way I do 💝",
+            ],
+            wishes: [
+                "You are my ROSE and I am your JACK (but I don't wanna die 😂😂)",
+                "May all your dreams blossom like roses! 🌸✨",
+                "May happiness bloom in your life! 🌺😊"
+            ],
+            special: [
+                "There's no one who does wata wata like you!(I love that)  😂💕",
+                "Neen ontharaa crazzyyy guru ",
+            ]
+        };
+
+        // Create splash roses effect
+        function splashRoses(type) {
+            const numberOfRoses = 20;
+            const button = event.target;
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            // Create roses
+            for (let i = 0; i < numberOfRoses; i++) {
+                const rose = document.createElement('div');
+                rose.className = 'splash-rose';
+                rose.textContent = '🌹';
+                
+                // Random direction
+                const angle = (Math.PI * 2 * i) / numberOfRoses;
+                const distance = Math.random() * 300 + 200;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                rose.style.left = centerX + 'px';
+                rose.style.top = centerY + 'px';
+                rose.style.setProperty('--tx', tx + 'px');
+                rose.style.setProperty('--ty', ty + 'px');
+                rose.style.animationDelay = (i * 0.02) + 's';
+                
+                document.body.appendChild(rose);
+                
+                // Remove after animation
+                setTimeout(() => rose.remove(), 2000);
+            }
+
+            // Show message popup
+            setTimeout(() => showMessage(type), 500);
+        }
+
+        // Show message popup
+        function showMessage(type) {
+            const messageArray = messages[type];
+            const randomMessage = messageArray[Math.floor(Math.random() * messageArray.length)];
+            
+            const popup = document.createElement('div');
+            popup.className = 'message-popup';
+            popup.innerHTML = `
+                <div class="popup-text">${randomMessage}</div>
+                <button class="popup-close" onclick="closePopup(this)">Close 💕</button>
+            `;
+            
+            document.body.appendChild(popup);
+            
+            // Auto close after 5 seconds
+            setTimeout(() => {
+                if (popup.parentElement) {
+                    closePopup(popup.querySelector('.popup-close'));
+                }
+            }, 5000);
+        }
+
+        // Close popup
+        function closePopup(button) {
+            const popup = button.closest('.message-popup');
+            popup.classList.add('hide');
+            setTimeout(() => popup.remove(), 500);
+        }
+
+        // Create falling rose petals
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            
+            // Random starting position
+            petal.style.left = Math.random() * 100 + 'vw';
+            
+            // Random animation duration
+            const duration = Math.random() * 5 + 5;
+            petal.style.animationDuration = duration + 's';
+            
+            // Random delay
+            petal.style.animationDelay = Math.random() * 5 + 's';
+            
+            // Random size
+            const size = Math.random() * 15 + 15;
+            petal.style.width = size + 'px';
+            petal.style.height = size + 'px';
+            
+            // Random opacity
+            petal.style.opacity = Math.random() * 0.5 + 0.3;
+            
+            document.body.appendChild(petal);
+            
+            // Remove petal after animation completes
+            setTimeout(() => {
+                petal.remove();
+            }, (duration + 5) * 1000);
+        }
+
+        // Create petals continuously
+        setInterval(createPetal, 300);
+        
+        // Create initial petals
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createPetal, i * 200);
+        }
+
+        // Add a subtle color change effect to the background
+        let hue = 0;
+        setInterval(() => {
+            hue = (hue + 0.1) % 360;
+            document.body.style.background = `linear-gradient(135deg, 
+                hsl(${250 + Math.sin(hue) * 30}, 70%, 60%) 0%, 
+                hsl(${280 + Math.cos(hue) * 20}, 60%, 55%) 100%)`;
+        }, 100);
+    </script>
+</body>
+</html>
